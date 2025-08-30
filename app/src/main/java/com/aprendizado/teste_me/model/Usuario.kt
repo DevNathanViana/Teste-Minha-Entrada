@@ -1,4 +1,4 @@
-package com.aprendizado.teste_me
+package com.aprendizado.teste_me.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

@@ -7,7 +7,7 @@
     android:background="@color/roxo_base"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".SplashScreen">
+    tools:context=".ui.SplashScreen">
 
     <ImageView
         android:layout_width="80dp"

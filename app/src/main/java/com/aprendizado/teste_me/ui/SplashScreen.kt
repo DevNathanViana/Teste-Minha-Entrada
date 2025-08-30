@@ -1,4 +1,4 @@
-package com.aprendizado.teste_me
+package com.aprendizado.teste_me.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.aprendizado.teste_me.manager.GerenciadorDeUsuarios
+import com.aprendizado.teste_me.R
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

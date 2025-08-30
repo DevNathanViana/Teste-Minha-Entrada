@@ -1,7 +1,9 @@
-package com.aprendizado.teste_me
+package com.aprendizado.teste_me.manager
 
 import android.content.Context
 import android.util.Patterns
+import com.aprendizado.teste_me.model.ResultadoCadastro
+import com.aprendizado.teste_me.model.Usuario
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -27,18 +29,20 @@ class GerenciadorDeUsuarios(private val context: Context) {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
-
     fun cadastrar(usuario: Usuario): ResultadoCadastro {
-        if (usuario.senha.length < 6) return ResultadoCadastro.SENHA_INVALIDA
-        if (usuario.nome.length < 2) return ResultadoCadastro.NOME_INVALIDO
-        if (!validaEmail(usuario.email)) return ResultadoCadastro.EMAIL_INVALIDO
-
-        val lista = getUsuarios()
-        if (lista.any { it.email == usuario.email }) return ResultadoCadastro.EMAIL_DUPLICADO
-
-        lista.add(usuario)
-        salvarUsuarios(lista)
-        return ResultadoCadastro.SUCESSO
+        when {
+            usuario.nome.isNullOrEmpty() || usuario.senha.isNullOrEmpty() || usuario.email.isNullOrEmpty() -> return ResultadoCadastro.CAMPOS_VAZIOS
+            usuario.senha.length < 6 -> return ResultadoCadastro.SENHA_INVALIDA
+            usuario.nome.length < 2 -> return ResultadoCadastro.NOME_INVALIDO
+            !validaEmail(usuario.email) -> return ResultadoCadastro.EMAIL_INVALIDO
+            getUsuarios().any { it.email == usuario.email } -> return ResultadoCadastro.EMAIL_DUPLICADO
+            else -> {
+                val lista = getUsuarios()
+                lista.add(usuario)
+                salvarUsuarios(lista)
+                return ResultadoCadastro.SUCESSO
+            }
+        }
     }
 
     fun login(email: String, senha: String): Usuario? {

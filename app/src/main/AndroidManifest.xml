@@ -12,16 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TESTEME">
         <activity
-            android:name=".Dashboard"
+            android:name=".ui.Dashboard"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".ui.Login"
             android:exported="false" />
         <activity
-            android:name=".Cadastro"
+            android:name=".ui.Cadastro"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".ui.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
