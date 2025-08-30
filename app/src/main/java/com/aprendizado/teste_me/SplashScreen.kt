@@ -20,9 +20,18 @@ class SplashScreen : AppCompatActivity() {
             insets
         }
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, Cadastro::class.java)
-            startActivity(intent)
-            finish()
+            var gerenciador = GerenciadorDeUsuarios(this)
+            var usuarioLogado = gerenciador.temUsuarioLogado()
+            if (usuarioLogado != null) {
+                val intent = Intent(this, Dashboard::class.java)
+                intent.putExtra("usuario", usuarioLogado)
+                startActivity(intent)
+                finish()
+            } else {
+                val intent = Intent(this, Login::class.java)
+                startActivity(intent)
+                finish()
+            }
         }, 3000)
     }
 }

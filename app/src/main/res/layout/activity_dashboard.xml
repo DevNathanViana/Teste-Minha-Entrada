@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="27dp"
-                android:text="Boa tarde, Nathan"
+                android:text="Como vai? Nathan"
                 android:textAlignment="center"
                 android:textColor="#212121"
                 android:textSize="30sp"
@@ -46,12 +46,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/conectionUser"
+                android:id="@+id/gerarConexaoUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="118dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginEnd="119dp"
                 android:text="Como você está?"
                 android:textColor="#212121"
                 android:textSize="20sp"
@@ -63,8 +61,6 @@
                 android:id="@+id/dadosAcesso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="117dp"
-                android:layout_marginEnd="115dp"
                 android:layout_marginBottom="16dp"
                 android:text="Dados de acesso:"
                 android:textColor="#212121"
@@ -72,58 +68,43 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/nomeUsuario"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/emailUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="75dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="74dp"
+                android:layout_marginBottom="16dp"
                 android:text="Email: oliveiranathan700@gmail.com"
                 android:textColor="#212121"
                 android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/buttonLogout"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nomeUsuario" />
+                app:layout_constraintTop_toBottomOf="@+id/nomeUsuario"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/nomeUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="75dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="74dp"
                 android:text="Nome: Nathan de Oliveira Viana"
                 android:textColor="#212121"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dadosAcesso" />
 
-            <TextView
-                android:id="@+id/senhaUsuario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="146dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="146dp"
-                android:text="Senha: ********"
-                android:textColor="#212121"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emailUsuario" />
-
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/sair"
-                android:layout_width="192dp"
-                android:layout_height="54dp"
-                android:layout_marginStart="100dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="100dp"
-                android:layout_marginBottom="27dp"
+                android:id="@+id/buttonLogout"
+                android:layout_width="200dp"
+                android:layout_height="55dp"
+                android:layout_marginBottom="24dp"
                 android:backgroundTint="@color/roxo_base"
                 android:text="Sair"
                 android:textColor="@color/white"
@@ -134,7 +115,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/senhaUsuario" />
+                app:layout_constraintTop_toBottomOf="@+id/emailUsuario"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
