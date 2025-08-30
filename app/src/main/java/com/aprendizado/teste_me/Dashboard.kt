@@ -33,11 +33,12 @@ class Dashboard : AppCompatActivity() {
             insets
         }
 
-        val primeiroNome = usuario?.nome?.split(" ")?.firstOrNull() ?: ""
+        val primeiroNome =
+            usuario?.nome?.split(" ")?.firstOrNull()?.replaceFirstChar { it.uppercase() } ?: ""
 
         usuario?.let {
+            mensagemDashboard.text = "Bem-vindo, $primeiroNome"
             nome.text = "Nome: ${it.nome}"
-            mensagemDashboard.text = "Bem-vindo $primeiroNome"
             email.text = "Email: ${it.email}"
         }
 

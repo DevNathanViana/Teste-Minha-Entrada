@@ -48,8 +48,6 @@
         android:orientation="horizontal"
         app:boxStrokeColor="#7542D0"
         app:boxStrokeWidth="2dp"
-        app:counterEnabled="true"
-        app:counterMaxLength="8"
         app:endIconMode="password_toggle"
         app:helperText="Campo obrigatório*"
         app:helperTextTextColor="#6B6666"
@@ -63,7 +61,6 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:inputType="textPassword"
-            android:maxLength="8"
             android:textColorLink="#5c0c8c" />
 
     </com.google.android.material.textfield.TextInputLayout>

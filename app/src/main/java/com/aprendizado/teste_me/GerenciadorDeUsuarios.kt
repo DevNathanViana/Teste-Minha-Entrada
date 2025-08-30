@@ -1,6 +1,7 @@
 package com.aprendizado.teste_me
 
 import android.content.Context
+import android.util.Patterns
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -22,14 +23,22 @@ class GerenciadorDeUsuarios(private val context: Context) {
         editor.apply()
     }
 
-    fun cadastrar(usuario: Usuario): Boolean {
-        val lista = getUsuarios()
+    fun validaEmail(email: String): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
 
-        if (lista.any { it.email == usuario.email }) return false
+
+    fun cadastrar(usuario: Usuario): ResultadoCadastro {
+        if (usuario.senha.length < 6) return ResultadoCadastro.SENHA_INVALIDA
+        if (usuario.nome.length < 2) return ResultadoCadastro.NOME_INVALIDO
+        if (!validaEmail(usuario.email)) return ResultadoCadastro.EMAIL_INVALIDO
+
+        val lista = getUsuarios()
+        if (lista.any { it.email == usuario.email }) return ResultadoCadastro.EMAIL_DUPLICADO
 
         lista.add(usuario)
         salvarUsuarios(lista)
-        return true
+        return ResultadoCadastro.SUCESSO
     }
 
     fun login(email: String, senha: String): Usuario? {
@@ -37,6 +46,7 @@ class GerenciadorDeUsuarios(private val context: Context) {
         val usuarioEncontrado = lista.find { it.email == email && it.senha == senha }
 
         return if (usuarioEncontrado != null) {
+            usuarioEncontrado.logado = true
             salvarUsuarios(lista)
             usuarioEncontrado
         } else {

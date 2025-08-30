@@ -51,18 +51,38 @@ class Cadastro : AppCompatActivity() {
 
             val manager = GerenciadorDeUsuarios(this)
 
-            if (usuario.senha.length < 6) {
-                Toast.makeText(this, "Senha deve ter no mínimo 6 caracteres", Toast.LENGTH_SHORT)
-                    .show()
-            } else if (manager.cadastrar(usuario)) {
-                Toast.makeText(this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, Login::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                Toast.makeText(this, "Email já cadastrado!", Toast.LENGTH_SHORT).show()
+            when (manager.cadastrar(usuario)) {
+                ResultadoCadastro.SUCESSO -> {
+                    Toast.makeText(this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT)
+                        .show()
+                    startActivity(Intent(this, Login::class.java))
+                    finish()
+                }
+
+                ResultadoCadastro.NOME_INVALIDO -> {
+                    Toast.makeText(this, "Nome deve ter no mínimo 2 caracteres", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+                ResultadoCadastro.EMAIL_INVALIDO -> {
+                    Toast.makeText(this, "Email inválido!", Toast.LENGTH_SHORT).show()
+                }
+
+                ResultadoCadastro.SENHA_INVALIDA -> {
+                    Toast.makeText(
+                        this,
+                        "Senha deve ter no mínimo 6 caracteres",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                ResultadoCadastro.EMAIL_DUPLICADO -> {
+                    Toast.makeText(this, "Email já cadastrado!", Toast.LENGTH_SHORT).show()
+                }
             }
+
         }
 
     }
+
 }

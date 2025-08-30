@@ -34,4 +34,10 @@ class SplashScreen : AppCompatActivity() {
             }
         }, 3000)
     }
+
+
+    override fun onResume()
+    {
+        super.onResume()
+    }
 }
